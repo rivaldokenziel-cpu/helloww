@@ -1,176 +1,421 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cinnamoroll Semangat untuk Dinii ☁️💙</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Dinii 💌 — Cute Slides</title>
+  <meta name="description" content="6-slide cute message for Dinii — pink kawaii interactive page" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg1: #d8f3ff;
-      --bg2: #f5faff;
-      --accent: #8ac6ff;
-      --pink: #ffbde6;
-      --white: #ffffff;
-      --text: #404b69;
+    :root{
+      --bg1:#ffe7f2;
+      --bg2:#ffd6ea;
+      --accent:#ff7db3;
+      --accent-2:#ffd1e8;
+      --muted:#6b6f85;
+      --card: rgba(255,255,255,0.85);
+      --shadow: rgba(20,30,60,0.12);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, var(--bg1), var(--bg2));
-      overflow: hidden;
-      font-family: 'Poppins', 'Comic Neue', sans-serif;
-      color: var(--text);
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Nunito,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#3a3150}
+    body{
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      display:flex;align-items:center;justify-content:center;padding:28px;
+      -webkit-font-smoothing:antialiased;
     }
 
-    .cloud {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: float 60s linear infinite;
+    /* container */
+    .stage{
+      width:min(940px,96vw);max-width:940px;background:var(--card);border-radius:22px;box-shadow:0 12px 30px var(--shadow);
+      padding:28px;position:relative;overflow:hidden;
     }
 
-    @keyframes float {
-      0% { transform: translateX(-200px); }
-      100% { transform: translateX(120vw); }
+    /* header */
+    .header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+    .logo{
+      width:64px;height:64px;border-radius:14px;background:linear-gradient(180deg,#fff1f8,#ffe6f2);display:grid;place-items:center;box-shadow:0 6px 18px rgba(255,125,179,0.14);
     }
+    .logo svg{width:46px;height:46px}
+    h1{font-family:"Fredoka One", 'Fredoka One', cursive;margin:0;font-size:22px;color:#d24a8a}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
 
-    .card {
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 30px;
-      max-width: 600px;
-      text-align: center;
-      backdrop-filter: blur(10px);
+    /* slides area */
+    .slides{position:relative;height:420px;margin-top:18px}
+    .slide{
+      position:absolute;inset:0;padding:22px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.35));
+      display:grid;grid-template-columns: 320px 1fr;gap:18px;align-items:center;transition:transform .6s cubic-bezier(.2,.9,.2,1),opacity .45s ease,filter .45s ease;
+      transform:translateX(100%);opacity:0;pointer-events:none;
     }
+    .slide.active{transform:translateX(0);opacity:1;pointer-events:auto}
+    .slide.left{transform:translateX(-100%)}
+    .col-left{display:flex;align-items:center;justify-content:center}
+    .col-right{padding:12px}
 
-    h1 {
-      font-size: 24px;
-      color: #4f73b8;
-      margin-bottom: 8px;
+    /* character holder */
+    .character{
+      width:280px;height:280px;border-radius:18px;background:linear-gradient(180deg,#fff,#fff8fb);display:grid;place-items:center;position:relative;
+      box-shadow:0 10px 30px rgba(70,20,60,0.06);
+      overflow:visible;
     }
-    p { color: #6b7aa1; margin-bottom: 20px; }
+    /* placeholder kawaii - replace with licensed image if available */
+    #characterImg{width:200px;height:200px;display:block;transform-origin:center;animation:float 3.8s ease-in-out infinite}
 
-    #line {
-      font-size: 20px;
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-      min-height: 80px;
-      transition: all .3s ease;
-    }
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
 
-    button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 5px;
-    }
-    button:hover { background: var(--pink); transform: scale(1.05); }
+    /* message area */
+    .title{font-family:Fredoka One, sans-serif;font-size:20px;color:#c53b78;margin:0 0 8px}
+    .text{font-size:17px;color:#3a3150;line-height:1.45;background:white;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(20,30,60,0.04)}
+    .text.typing{min-height:120px;white-space:pre-line}
 
-    .stars span {
-      position: absolute;
-      display: block;
-      width: 8px; height: 8px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 3s linear infinite;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(-10px); }
+    /* controls */
+    .controls{display:flex;gap:12px;align-items:center;margin-top:14px}
+    .btn{border:0;padding:10px 18px;border-radius:999px;font-weight:700;cursor:pointer;background:#fff;color:#42355a;box-shadow:0 6px 18px rgba(20,30,60,0.06)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff8ab6);color:white}
+    .btn.ghost{background:transparent;border:1px solid rgba(66,53,90,0.06)}
+    .btn:focus{outline:3px solid rgba(255,125,179,0.18)}
+
+    /* nav bottom */
+    .nav{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:12px}
+    .dots{display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(66,53,90,0.08)}
+    .dot.active{background:linear-gradient(90deg,var(--accent),#ff8ab6);box-shadow:0 6px 14px rgba(255,125,179,0.12)}
+
+    /* particle hearts */
+    .particle{position:absolute;width:14px;height:14px;border-radius:50%;pointer-events:none;background:linear-gradient(90deg,#ffd1e8,#fff1f8);box-shadow:0 6px 18px rgba(255,125,179,0.12);opacity:0}
+
+    /* spotify embed styling */
+    .spotifyWrap{margin-top:12px;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(30,20,60,0.06)}
+    iframe{border:0;width:100%;height:380px;display:block}
+
+    /* responsive */
+    @media (max-width:880px){
+      .slide{grid-template-columns:1fr;padding:18px;height:520px}
+      .col-left{order:0}
+      .col-right{order:1}
+      .character{width:220px;height:220px}
+      #characterImg{width:170px;height:170px}
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <div id="clouds"></div>
+  <main class="stage" role="main">
+    <header class="header">
+      <div class="logo" aria-hidden>
+        <!-- little kawaii icon -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><rect width="64" height="64" rx="12" fill="#fff"/><circle cx="32" cy="28" r="12" fill="#ffd1e8"/><path d="M20 18c0 6 12 10 12 10s12-4 12-10" stroke="#ff7db3" stroke-width="2" stroke-linecap="round"/></g></svg>
+      </div>
+      <div>
+        <h1>For Dinii 💌</h1>
+        <p class="lead">Klik tombol untuk melihat pesan manis & playlist khusus ✨</p>
+      </div>
+    </header>
 
-  <div class="card">
-    <h1>☁️ Kata Semangat untuk Dinii ✨</h1>
-    <p>Hai Dinii 💙 ini aku buat khusus buat kamu, supaya kalau lagi capek atau sedih bisa klik tombol ini dan dapet semangat baru ☁️🐰</p>
-    <div id="line">Dinii hebat banget hari ini, bahkan Cinnamoroll aja iri sama semangatmu 🐰💫</div>
-    <button id="random">✨ Acak Semangat!</button>
-    <button id="copy">💌 Copy</button>
-  </div>
+    <section class="slides" aria-label="Slides pesan untuk Dinii">
+      <!-- Slide templates: 6 slides -->
+      <!-- Slide 1 -->
+      <article class="slide active" data-index="0" id="slide-0" role="group" aria-roledescription="slide" aria-label="Opening">
+        <div class="col-left">
+          <div class="character" aria-hidden>
+            <!-- Replace src with licensed Hello Kitty image if you have -->
+            <img id="characterImg" src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>
+                <g fill='none' fill-rule='evenodd'>
+                  <ellipse cx='100' cy='140' rx='52' ry='34' fill='%23fff'/>
+                  <ellipse cx='100' cy='88' rx='44' ry='48' fill='%23fff'/>
+                  <ellipse cx='70' cy='36' rx='14' ry='28' fill='%23fff'/>
+                  <ellipse cx='130' cy='36' rx='14' ry='28' fill='%23fff'/>
+                  <circle cx='86' cy='88' r='4' fill='%23333'/>
+                  <circle cx='114' cy='88' r='4' fill='%23333'/>
+                  <path d='M92 116c4 4 12 4 16 0' stroke='%23f4a6c0' stroke-width='3' stroke-linecap='round'/>
+                  <rect x='60' y='16' width='30' height='14' rx='6' fill='%23ffd1e8' transform='rotate(-18 75 23)'/>
+                </g>
+              </svg>" alt="Ilustrasi kawaii (placeholder)">
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="title">For Dinii 💌</div>
+          <div class="text" id="text-0">Hai Dinii~ Aku punya sesuatu yang spesial buat kamu 💖<br><small style="color:var(--muted)">Tekan "Buka pesanku" untuk lanjut</small></div>
+          <div class="controls">
+            <button class="btn primary" id="nextBtn-0">✨ Buka Pesanku ✨</button>
+            <button class="btn" id="copyBtn-0" aria-label="Salin pesan">💌 Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="slide" data-index="1" id="slide-1" role="group" aria-roledescription="slide" aria-label="Greeting">
+        <div class="col-left">
+          <div class="character" aria-hidden>
+            <img id="characterImg-1" src="" alt="" style="display:none" />
+            <!-- reuse svg placeholder -->
+            <img src="" alt="" style="display:none" />
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="title">Hello Manisss 🍓</div>
+          <div class="text" id="text-1">Ada titipan kata manis dari aku buat kamuu~ 💗</div>
+          <div class="controls">
+            <button class="btn primary nextBtn">Lanjut baca 🍰</button>
+            <button class="btn prevBtn">⟵ Kembali</button>
+            <button class="btn" data-copy="1">💌 Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide" data-index="2" id="slide-2" role="group" aria-roledescription="slide" aria-label="Pesan Semangat">
+        <div class="col-left">
+          <div class="character" aria-hidden><!-- placeholder --></div>
+        </div>
+        <div class="col-right">
+          <div class="title">Pesan Semangat 💪</div>
+          <div class="text typing" id="text-2" aria-live="polite"></div>
+          <div class="controls">
+            <button class="btn primary nextBtn">Klik lagi ya 🌷</button>
+            <button class="btn prevBtn">⟵ Kembali</button>
+            <button class="btn" data-copy="2">💌 Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 4 -->
+      <article class="slide" data-index="3" id="slide-3" role="group" aria-roledescription="slide" aria-label="Peluk Virtual">
+        <div class="col-left">
+          <div class="character" aria-hidden></div>
+        </div>
+        <div class="col-right">
+          <div class="title">Peluk Virtual 🤍</div>
+          <div class="text" id="text-3">Aku selalu dukung kamu dari sini, Dinii~<br>Jangan lupa istirahat & makan yang enak ya 💖</div>
+          <div class="controls">
+            <button class="btn primary nextBtn">Next ✨</button>
+            <button class="btn prevBtn">⟵ Kembali</button>
+            <button class="btn" data-copy="3">💌 Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 5 -->
+      <article class="slide" data-index="4" id="slide-4" role="group" aria-roledescription="slide" aria-label="Terima Kasih">
+        <div class="col-left">
+          <div class="character" aria-hidden></div>
+        </div>
+        <div class="col-right">
+          <div class="title">Terima Kasih & Cinta 💌</div>
+          <div class="text" id="text-4">Terima kasih udah jadi orang sebaik kamu.<br>Kamu layak disayang & dihargai setiap hari 💞</div>
+          <div class="controls">
+            <button class="btn primary nextBtn">Lihat kejutan terakhir 🎧</button>
+            <button class="btn prevBtn">⟵ Kembali</button>
+            <button class="btn" data-copy="4">💌 Copy</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 6 (Spotify embed) -->
+      <article class="slide" data-index="5" id="slide-5" role="group" aria-roledescription="slide" aria-label="Playlist">
+        <div class="col-left">
+          <div class="character" aria-hidden></div>
+        </div>
+        <div class="col-right">
+          <div class="title">Playlist Buat Kamu 🎧</div>
+          <div class="text" id="text-5">Klik play jika kamu mau mendengar playlist spesial buat kamu, Dinii 💗</div>
+          <div class="spotifyWrap" aria-hidden>
+            <!-- REPLACE / VERIFY: spotify embed of the playlist you provided -->
+            <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1EJsV016sSfuuN" allow="encrypted-media" loading="lazy" title="Playlist untuk Dinii"></iframe>
+          </div>
+          <div class="controls" style="margin-top:12px">
+            <button class="btn prevBtn">⟵ Kembali</button>
+            <button class="btn" id="restartBtn">Mulai dari awal ✨</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- bottom nav -->
+    <nav class="nav" aria-label="Navigasi slide">
+      <div class="dots" id="dots"></div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <small style="color:var(--muted)">Dibuat dengan love oleh kamu 💫</small>
+      </div>
+    </nav>
+
+    <!-- particle container -->
+    <div id="particleLayer" aria-hidden></div>
+  </main>
 
   <script>
-    const lines = [
-      "Semangat yaa Dinii! bahkan awan aja iri liat kamu tetep bersinar ☁️💖",
-      "Kalau capek, ingat ya Dinii... bahkan kopi aja butuh istirahat, apalagi kamu yang manis 🫶",
-      "Dinii tuh kayak Cinnamoroll, selalu bikin dunia jadi lebih lembut 💙",
-      "Hari ini susah, Dinii? gapapa kok, langit juga kadang mendung dulu sebelum cerah lagi ☁️✨",
-      "Bangun dan senyum ya Dinii! kamu tuh lucu banget buat disedihin 😋",
-      "Cinnamoroll bilang, ‘ayo semangat Dinii, nanti aku peluk dari awan!’ ☁️💫",
-      "Jangan lupa minum air yaa Dinii, biar hatimu gak kering kayak tugas kuliah 😆",
-      "Dinii tuh bukan cuma kuat, tapi juga menggemaskan banget 🩵",
-      "Kalau dunia jahat sama Dinii, inget aku di sini siap jadi pelindung kecilmu 🐰💪",
-      "Ayo semangat, Dinii! karena senyum kamu tuh lebih manis dari bubble tea 🍬",
-      "Males? gapapa Dinii, yang penting jangan males jadi bahagia 🩷",
-      "Kalau lagi sedih, bayangin aja Cinnamoroll nari buat Dinii 💃☁️"
+    // ====== DATA ======
+    const messagesTyping = [
+      "Aku bangga banget sama kamu, Dinii 🌸\n\nMakasi udah terus berjuang sejauh ini.\nWalaupun kadang capek dan berat, kamu tetap hebat 💖",
+      // fallback extras (will rotate on repeated clicks)
+      "Ingat ya: istirahat itu bagian dari berjuang. Aku dukung kamu selalu ✨",
+      "Senyummu itu energi buat orang-orang di sekitarmu. Jangan ragu bahagia 💕"
+    ];
+    const shortMessages = [
+      "Hai Dinii~ Aku punya sesuatu yang spesial buat kamu 💖",
+      "Ada titipan kata manis dari aku buat kamuu~ 💗",
+      "Aku selalu dukung kamu dari sini, Dinii~ Jangan lupa istirahat & makan yang enak 💖",
+      "Terima kasih udah jadi orang sebaik kamu. Kamu layak disayang setiap hari 💞",
+      "Klik play jika kamu mau mendengar playlist spesial buat kamu 💗"
     ];
 
-    const lineEl = document.getElementById('line');
-    const randomBtn = document.getElementById('random');
-    const copyBtn = document.getElementById('copy');
+    // ====== SETUP ======
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const total = slides.length;
+    let idx = 0;
 
-    function showRandom() {
-      const randomText = lines[Math.floor(Math.random() * lines.length)];
-      lineEl.style.opacity = 0;
-      setTimeout(() => {
-        lineEl.textContent = randomText;
-        lineEl.style.opacity = 1;
-      }, 300);
-      createStars();
+    const dotsWrap = document.getElementById('dots');
+    for(let i=0;i<total;i++){
+      const d = document.createElement('div'); d.className='dot' + (i===0?' active':''); d.dataset.index=i;
+      dotsWrap.appendChild(d);
+      d.addEventListener('click', ()=> goToIndex(i));
     }
 
-    randomBtn.addEventListener('click', showRandom);
+    // show/hide slides
+    function show(idxNew){
+      slides.forEach((s,i)=>{
+        s.classList.remove('active','left');
+        if(i < idxNew) s.classList.add('left'); // slides to left
+        if(i === idxNew) s.classList.add('active');
+      });
+      // update dots
+      document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===idxNew));
+      idx = idxNew;
+      // special: when showing slide 2 (index 2) start typing
+      if(idx === 2) startTyping();
+      // spawn tiny hearts when slide changes
+      spawnHearts(8);
+    }
 
-    copyBtn.addEventListener('click', async ()=>{
-      await navigator.clipboard.writeText(lineEl.textContent);
-      copyBtn.textContent = 'Tersalin! 💫';
-      setTimeout(()=> copyBtn.textContent = '💌 Copy', 1200);
+    function goToIndex(i){ if(i<0) i=0; if(i>=total) i=total-1; show(i); }
+
+    // next/prev button wiring
+    document.querySelectorAll('.nextBtn').forEach(btn=> btn.addEventListener('click', ()=> goToIndex(Math.min(total-1, idx+1))));
+    document.querySelectorAll('.prevBtn').forEach(btn=> btn.addEventListener('click', ()=> goToIndex(Math.max(0, idx-1))));
+    document.getElementById('nextBtn-0').addEventListener('click', ()=> goToIndex(1));
+    document.getElementById('restartBtn').addEventListener('click', ()=> goToIndex(0));
+
+    // copy buttons per slide (fallback selects text)
+    document.querySelectorAll('[data-copy], #copyBtn-0').forEach(el=>{
+      el.addEventListener('click', async (e)=>{
+        const sIndex = el.dataset.copy ? Number(el.dataset.copy) : 0;
+        const textEl = document.getElementById('text-' + sIndex) || document.getElementById('text-0');
+        const txt = textEl ? textEl.innerText.trim() : '';
+        try{
+          await navigator.clipboard.writeText(txt);
+          const original = el.innerHTML;
+          el.innerHTML = 'Tersalin! 💫';
+          setTimeout(()=> el.innerHTML = original, 1200);
+        }catch(err){
+          // fallback
+          const range = document.createRange();
+          range.selectNodeContents(textEl);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          try{ document.execCommand('copy'); alert('Teks tersalin (fallback)'); }catch(e){ alert('Tidak bisa menyalin otomatis. Salin manual ya.'); }
+          sel.removeAllRanges();
+        }
+      });
     });
 
-    // awan bergerak
-    const clouds = document.getElementById('clouds');
-    for(let i=0;i<6;i++){
-      const c = document.createElement('div');
-      c.className = 'cloud';
-      const size = 80 + Math.random()*100;
-      c.style.width = size+'px';
-      c.style.height = size*0.6+'px';
-      c.style.top = Math.random()*80+'vh';
-      c.style.left = -200+'px';
-      c.style.animationDuration = 40 + Math.random()*40+'s';
-      clouds.appendChild(c);
+    // ====== Typing effect for slide 3 (index 2) ======
+    let typingTimer = null;
+    function startTyping(){
+      const el = document.getElementById('text-2');
+      const text = messagesTyping.shift() || messagesTyping[0];
+      el.textContent = '';
+      let i=0;
+      clearInterval(typingTimer);
+      typingTimer = setInterval(()=>{
+        el.textContent += text[i++] || '';
+        if(i >= text.length) clearInterval(typingTimer);
+      }, 28);
     }
 
-    // bintang jatuh
-    function createStars(){
-      const container = document.querySelector('.stars');
-      for(let i=0;i<6;i++){
-        const s = document.createElement('span');
-        s.style.left = Math.random()*100+'vw';
-        s.style.top = Math.random()*100+'vh';
-        s.style.animationDuration = 2 + Math.random()*2+'s';
-        container.appendChild(s);
-        setTimeout(()=> s.remove(),3000);
+    // ====== Particles / hearts ======
+    const particleLayer = document.getElementById('particleLayer');
+    function spawnHearts(n=6){
+      for(let i=0;i<n;i++){
+        const p = document.createElement('div');
+        p.className='particle';
+        // position randomly within slide area
+        const rect = document.querySelector('.stage').getBoundingClientRect();
+        const x = rect.left + Math.random()*(rect.width*0.8) + rect.width*0.05;
+        const y = rect.top + Math.random()*(rect.height*0.7) + rect.height*0.05;
+        p.style.left = (x) + 'px';
+        p.style.top = (y) + 'px';
+        // style variation
+        p.style.background = Math.random()>0.5 ? 'linear-gradient(90deg,#ffd1e8,#fff1f8)' : 'linear-gradient(90deg,#fff9d6,#ffd1e8)';
+        p.style.opacity = 1;
+        particleLayer.appendChild(p);
+        // animate
+        const dx = (Math.random()-0.5)*120;
+        const dy = -80 - Math.random()*140;
+        const rot = (Math.random()*60)-30;
+        p.animate([
+          { transform: 'translate(0,0) rotate(0deg)', opacity:1 },
+          { transform: `translate(${dx}px, ${dy}px) rotate(${rot}deg)`, opacity:0 }
+        ], { duration: 800 + Math.random()*700, easing: 'cubic-bezier(.2,.8,.2,1)' });
+        setTimeout(()=> p.remove(), 1600);
       }
     }
+
+    // initial small hearts
+    setTimeout(()=> spawnHearts(10), 700);
+
+    // keyboard nav (arrow keys)
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') goToIndex(Math.min(total-1, idx+1));
+      if(e.key === 'ArrowLeft') goToIndex(Math.max(0, idx-1));
+    });
+
+    // small accessibility: announce slide change
+    const liveAnnounce = document.createElement('div');
+    liveAnnounce.setAttribute('aria-live','polite');
+    liveAnnounce.style.position='absolute'; liveAnnounce.style.left='-9999px';
+    document.body.appendChild(liveAnnounce);
+    function announce(text){ liveAnnounce.textContent = text; }
+
+    // update announce on slide change
+    const obs = new MutationObserver(()=> announce('Slide ' + (idx+1) + ' dari ' + total));
+    obs.observe(document.querySelector('.slides'), { attributes: true, attributeFilter: ['class'], subtree: true, childList: false });
+
+    // auto-fit initial typing content for slide 3 (preload)
+    document.getElementById('text-2').textContent = ''; // empty until typed
+
+    // ensure first slide active
+    show(0);
+
+    // small UX: when clicking primary on the first slide spawn hearts near button
+    document.getElementById('nextBtn-0').addEventListener('click', (e)=> {
+      const r = e.currentTarget.getBoundingClientRect();
+      spawnHeartsAt(r.left + r.width/2, r.top + r.height/2, 12);
+    });
+
+    // helper spawn hearts near a point
+    function spawnHeartsAt(px, py, n=8){
+      for(let i=0;i<n;i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = (px + (Math.random()-0.5)*80) + 'px';
+        p.style.top = (py + (Math.random()-0.5)*20) + 'px';
+        p.style.background = (Math.random()>0.5) ? 'linear-gradient(90deg,#ffd1e8,#fff1f8)' : 'linear-gradient(90deg,#fff9d6,#ffd1e8)';
+        particleLayer.appendChild(p);
+        const dx = (Math.random()-0.5)*200;
+        const dy = -40 - Math.random()*200;
+        p.animate([
+          { transform: 'translate(0,0) scale(1)', opacity:1 },
+          { transform: `translate(${dx}px, ${dy}px) scale(0.3)`, opacity:0 }
+        ], { duration: 800 + Math.random()*800, easing: 'cubic-bezier(.2,.8,.2,1)' });
+        setTimeout(()=> p.remove(), 1800);
+      }
+    }
+
+    // make initial small animation on load
+    window.addEventListener('load', ()=> {
+      // fade-in stage
+      document.querySelector('.stage').style.transform = 'translateY(0)';
+    });
   </script>
 </body>
 </html>
