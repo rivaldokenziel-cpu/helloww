@@ -1,1 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Surprise untuk Cewekku 💖</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#ff6b6b;--muted:#94a3b8}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 10% 10%, #10203a 0%, var(--bg) 40%), linear-gradient(180deg,#051028 0%, #081226 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8}
+    .card{width:min(760px,92vw);background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03)}
+    header{display:flex;gap:16px;align-items:center}
+    .heart{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(from 0deg at 50% 50%, #ff9a9e, #ff6b6b);box-shadow:0 6px 18px rgba(255,107,107,0.18)}
+    .heart:after{content:'❤';font-size:28px}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 14px;color:var(--muted)}
+    .line-box{min-height:120px;display:flex;align-items:center;justify-content:center;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px dashed rgba(255,255,255,0.02);font-size:20px;text-align:center}
+    .controls{display:flex;gap:8px;justify-content:center;margin-top:14px}
+    button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:10px;color:inherit;cursor:pointer;font-weight:600} 
+    button.primary{background:linear-gradient(90deg,var(--accent),#ff9a9e);color:#081224;border:0}
+    .small{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+    footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:8px}
+    .credit{font-size:12px;color:var(--muted)}
+    .sparkles{position:absolute;pointer-events:none;inset:0}
+
+    /* typing cursor */
+    .typed{border-right:2px solid rgba(255,255,255,0.12);padding-right:6px}
+
+    @media (max-width:540px){.heart{width:52px;height:52px}.card{padding:18px}.line-box{font-size:18px}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <header>
+      <div class="heart" aria-hidden></div>
+      <div>
+        <h1>Surprise buat cewek spesial 💘</h1>
+        <p class="lead">Klik "Acak" untuk gombalan baru. Kalau suka, klik "Copy" lalu kirim lewat chat — jangan lupa tambahkan emot hati! 🥰</p>
+      </div>
+    </header>
+
+    <main>
+      <div id="line" class="line-box">Hai cantik, kamu tahu? aku lagi susah tidur... soalnya kamu selalu hadir dalam mimpiku.</div>
+
+      <div class="controls">
+        <button id="prev">⟵ Sebelumnya</button>
+        <button id="random" class="primary">Acak Gombal!</button>
+        <button id="next">Selanjutnya ⟶</button>
+        <button id="copy">Copy</button>
+      </div>
+
+      <div class="small">Tip: tekan <strong>Acak Gombal!</strong> terus sampai nemu yang pas.</div>
+
+      <footer>
+        <div class="credit">Made with ❤️ by kamu</div>
+        <div class="credit">Buka di GitHub Pages untuk jadi halaman kejutan</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const lines = [
+      "Kamu itu mirip kopi biar makin pagi aku selalu semangat, karena ada kamu di pikiranku.",
+      "Kamu tahu kenapa aku suka gambar? Karena setiap kali lihat senyummu, gambarku langsung jadi indah.",
+      "Kamu bukan Google, tapi semua yang aku cari ada di kamu.",
+      "Kalau kamu bintang, aku rela jadi malam agar bisa melihatmu setiap hari.",
+      "Cemburu itu wajar, apalagi kalo aku ngelihat kamu deket sama yang lain — itu tandanya aku sayang.",
+      "Kamu tuh alasan kenapa aku ngakak sendiri sambil pegang hp — baca chatmu terus.",
+      "Kalau pelukan bisa disimpan, aku udah nabung pelukan dari kamu buat seumur hidup.",
+      "Kamu ibarat password Wi-Fi: begitu dekat, hidupku langsung konek.",
+      "Senyumanmu bikin aku lupa semua password yang ribet — yang kuingat cuma nama kamu.",
+      "Aku gak jago matematika, tapi aku tau jumlah yang penting: kamu + aku = kita.",
+      "Jangan pernah hilang ya, soalnya kalo kamu hilang aku harus pakai GPS buat cari hati aku sendiri.",
+      "Kalau aku jadi rindu, itu karena kamu sering kehabisan alasan buat ninggalin aku sendiri."
+    ];
+
+    let idx = 0;
+    const el = document.getElementById('line');
+    const randomBtn = document.getElementById('random');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const copyBtn = document.getElementById('copy');
+
+    function show(i){
+      i = (i + lines.length) % lines.length;
+      idx = i;
+      typeText(lines[i]);
+    }
+
+    // simple typewriter
+    let typingTimer;
+    function typeText(text){
+      clearInterval(typingTimer);
+      el.classList.add('typed');
+      el.textContent = '';
+      let k = 0;
+      typingTimer = setInterval(()=>{
+        el.textContent += text[k++] || '';
+        if(k >= text.length){ clearInterval(typingTimer); el.classList.remove('typed'); }
+      }, 18);
+    }
+
+    randomBtn.addEventListener('click', ()=>{ show(Math.floor(Math.random()*lines.length)); });
+    prevBtn.addEventListener('click', ()=>{ show(idx-1); });
+    nextBtn.addEventListener('click', ()=>{ show(idx+1); });
+
+    copyBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(lines[idx]);
+        copyBtn.textContent = 'Tersalin ✓';
+        setTimeout(()=> copyBtn.textContent = 'Copy',1200);
+      }catch(e){
+        alert('Tidak bisa menyalin otomatis. Silakan blok teks dan salin secara manual.');
+      }
+    });
+
+    // show first with little delay
+    window.addEventListener('load', ()=> show(0));
+  </script>
+</body>
+</html>
 
