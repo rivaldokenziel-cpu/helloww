@@ -3,120 +3,174 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Surprise untuk Cewekku 💖</title>
+  <title>Cinnamoroll Semangat untuk Dinii ☁️💙</title>
   <style>
-    :root{--bg:#0f172a;--card:#0b1220;--accent:#ff6b6b;--muted:#94a3b8}
-    *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 10% 10%, #10203a 0%, var(--bg) 40%), linear-gradient(180deg,#051028 0%, #081226 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8}
-    .card{width:min(760px,92vw);background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03)}
-    header{display:flex;gap:16px;align-items:center}
-    .heart{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(from 0deg at 50% 50%, #ff9a9e, #ff6b6b);box-shadow:0 6px 18px rgba(255,107,107,0.18)}
-    .heart:after{content:'❤';font-size:28px}
-    h1{margin:0;font-size:20px}
-    p.lead{margin:6px 0 14px;color:var(--muted)}
-    .line-box{min-height:120px;display:flex;align-items:center;justify-content:center;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px dashed rgba(255,255,255,0.02);font-size:20px;text-align:center}
-    .controls{display:flex;gap:8px;justify-content:center;margin-top:14px}
-    button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:10px;color:inherit;cursor:pointer;font-weight:600} 
-    button.primary{background:linear-gradient(90deg,var(--accent),#ff9a9e);color:#081224;border:0}
-    .small{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
-    footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:8px}
-    .credit{font-size:12px;color:var(--muted)}
-    .sparkles{position:absolute;pointer-events:none;inset:0}
+    :root {
+      --bg1: #d8f3ff;
+      --bg2: #f5faff;
+      --accent: #8ac6ff;
+      --pink: #ffbde6;
+      --white: #ffffff;
+      --text: #404b69;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow: hidden;
+      font-family: 'Poppins', 'Comic Neue', sans-serif;
+      color: var(--text);
+    }
 
-    /* typing cursor */
-    .typed{border-right:2px solid rgba(255,255,255,0.12);padding-right:6px}
+    .cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 60s linear infinite;
+    }
 
-    @media (max-width:540px){.heart{width:52px;height:52px}.card{padding:18px}.line-box{font-size:18px}}
+    @keyframes float {
+      0% { transform: translateX(-200px); }
+      100% { transform: translateX(120vw); }
+    }
+
+    .card {
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 600px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #4f73b8;
+      margin-bottom: 8px;
+    }
+    p { color: #6b7aa1; margin-bottom: 20px; }
+
+    #line {
+      font-size: 20px;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      min-height: 80px;
+      transition: all .3s ease;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    button:hover { background: var(--pink); transform: scale(1.05); }
+
+    .stars span {
+      position: absolute;
+      display: block;
+      width: 8px; height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s linear infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <div id="clouds"></div>
+
   <div class="card">
-    <header>
-      <div class="heart" aria-hidden></div>
-      <div>
-        <h1>Surprise buat cewek spesial 💘</h1>
-        <p class="lead">Klik "Acak" untuk gombalan baru. Kalau suka, klik "Copy" lalu kirim lewat chat — jangan lupa tambahkan emot hati! 🥰</p>
-      </div>
-    </header>
-
-    <main>
-      <div id="line" class="line-box">Hai cantik, kamu tahu? aku lagi susah tidur... soalnya kamu selalu hadir dalam mimpiku.</div>
-
-      <div class="controls">
-        <button id="prev">⟵ Sebelumnya</button>
-        <button id="random" class="primary">Acak Gombal!</button>
-        <button id="next">Selanjutnya ⟶</button>
-        <button id="copy">Copy</button>
-      </div>
-
-      <div class="small">Tip: tekan <strong>Acak Gombal!</strong> terus sampai nemu yang pas.</div>
-
-      <footer>
-        <div class="credit">Made with ❤️ by kamu</div>
-        <div class="credit">Buka di GitHub Pages untuk jadi halaman kejutan</div>
-      </footer>
-    </main>
+    <h1>☁️ Kata Semangat untuk Dinii ✨</h1>
+    <p>Hai Dinii 💙 ini aku buat khusus buat kamu, supaya kalau lagi capek atau sedih bisa klik tombol ini dan dapet semangat baru ☁️🐰</p>
+    <div id="line">Dinii hebat banget hari ini, bahkan Cinnamoroll aja iri sama semangatmu 🐰💫</div>
+    <button id="random">✨ Acak Semangat!</button>
+    <button id="copy">💌 Copy</button>
   </div>
 
   <script>
     const lines = [
-      "Kamu itu mirip kopi biar makin pagi aku selalu semangat, karena ada kamu di pikiranku.",
-      "Kamu tahu kenapa aku suka gambar? Karena setiap kali lihat senyummu, gambarku langsung jadi indah.",
-      "Kamu bukan Google, tapi semua yang aku cari ada di kamu.",
-      "Kalau kamu bintang, aku rela jadi malam agar bisa melihatmu setiap hari.",
-      "Cemburu itu wajar, apalagi kalo aku ngelihat kamu deket sama yang lain — itu tandanya aku sayang.",
-      "Kamu tuh alasan kenapa aku ngakak sendiri sambil pegang hp — baca chatmu terus.",
-      "Kalau pelukan bisa disimpan, aku udah nabung pelukan dari kamu buat seumur hidup.",
-      "Kamu ibarat password Wi-Fi: begitu dekat, hidupku langsung konek.",
-      "Senyumanmu bikin aku lupa semua password yang ribet — yang kuingat cuma nama kamu.",
-      "Aku gak jago matematika, tapi aku tau jumlah yang penting: kamu + aku = kita.",
-      "Jangan pernah hilang ya, soalnya kalo kamu hilang aku harus pakai GPS buat cari hati aku sendiri.",
-      "Kalau aku jadi rindu, itu karena kamu sering kehabisan alasan buat ninggalin aku sendiri."
+      "Semangat yaa Dinii! bahkan awan aja iri liat kamu tetep bersinar ☁️💖",
+      "Kalau capek, ingat ya Dinii... bahkan kopi aja butuh istirahat, apalagi kamu yang manis 🫶",
+      "Dinii tuh kayak Cinnamoroll, selalu bikin dunia jadi lebih lembut 💙",
+      "Hari ini susah, Dinii? gapapa kok, langit juga kadang mendung dulu sebelum cerah lagi ☁️✨",
+      "Bangun dan senyum ya Dinii! kamu tuh lucu banget buat disedihin 😋",
+      "Cinnamoroll bilang, ‘ayo semangat Dinii, nanti aku peluk dari awan!’ ☁️💫",
+      "Jangan lupa minum air yaa Dinii, biar hatimu gak kering kayak tugas kuliah 😆",
+      "Dinii tuh bukan cuma kuat, tapi juga menggemaskan banget 🩵",
+      "Kalau dunia jahat sama Dinii, inget aku di sini siap jadi pelindung kecilmu 🐰💪",
+      "Ayo semangat, Dinii! karena senyum kamu tuh lebih manis dari bubble tea 🍬",
+      "Males? gapapa Dinii, yang penting jangan males jadi bahagia 🩷",
+      "Kalau lagi sedih, bayangin aja Cinnamoroll nari buat Dinii 💃☁️"
     ];
 
-    let idx = 0;
-    const el = document.getElementById('line');
+    const lineEl = document.getElementById('line');
     const randomBtn = document.getElementById('random');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
     const copyBtn = document.getElementById('copy');
 
-    function show(i){
-      i = (i + lines.length) % lines.length;
-      idx = i;
-      typeText(lines[i]);
+    function showRandom() {
+      const randomText = lines[Math.floor(Math.random() * lines.length)];
+      lineEl.style.opacity = 0;
+      setTimeout(() => {
+        lineEl.textContent = randomText;
+        lineEl.style.opacity = 1;
+      }, 300);
+      createStars();
     }
 
-    // simple typewriter
-    let typingTimer;
-    function typeText(text){
-      clearInterval(typingTimer);
-      el.classList.add('typed');
-      el.textContent = '';
-      let k = 0;
-      typingTimer = setInterval(()=>{
-        el.textContent += text[k++] || '';
-        if(k >= text.length){ clearInterval(typingTimer); el.classList.remove('typed'); }
-      }, 18);
-    }
-
-    randomBtn.addEventListener('click', ()=>{ show(Math.floor(Math.random()*lines.length)); });
-    prevBtn.addEventListener('click', ()=>{ show(idx-1); });
-    nextBtn.addEventListener('click', ()=>{ show(idx+1); });
+    randomBtn.addEventListener('click', showRandom);
 
     copyBtn.addEventListener('click', async ()=>{
-      try{
-        await navigator.clipboard.writeText(lines[idx]);
-        copyBtn.textContent = 'Tersalin ✓';
-        setTimeout(()=> copyBtn.textContent = 'Copy',1200);
-      }catch(e){
-        alert('Tidak bisa menyalin otomatis. Silakan blok teks dan salin secara manual.');
-      }
+      await navigator.clipboard.writeText(lineEl.textContent);
+      copyBtn.textContent = 'Tersalin! 💫';
+      setTimeout(()=> copyBtn.textContent = '💌 Copy', 1200);
     });
 
-    // show first with little delay
-    window.addEventListener('load', ()=> show(0));
+    // awan bergerak
+    const clouds = document.getElementById('clouds');
+    for(let i=0;i<6;i++){
+      const c = document.createElement('div');
+      c.className = 'cloud';
+      const size = 80 + Math.random()*100;
+      c.style.width = size+'px';
+      c.style.height = size*0.6+'px';
+      c.style.top = Math.random()*80+'vh';
+      c.style.left = -200+'px';
+      c.style.animationDuration = 40 + Math.random()*40+'s';
+      clouds.appendChild(c);
+    }
+
+    // bintang jatuh
+    function createStars(){
+      const container = document.querySelector('.stars');
+      for(let i=0;i<6;i++){
+        const s = document.createElement('span');
+        s.style.left = Math.random()*100+'vw';
+        s.style.top = Math.random()*100+'vh';
+        s.style.animationDuration = 2 + Math.random()*2+'s';
+        container.appendChild(s);
+        setTimeout(()=> s.remove(),3000);
+      }
+    }
   </script>
 </body>
 </html>
-
